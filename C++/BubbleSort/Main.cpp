@@ -30,6 +30,10 @@ int main()
         cout << arr[i] << endl;
     }
 
+    cout << endl;
+
+    bool test1 = util.CheckOrderedListAsc(arr, SIZE);
+
     //remove from memory
     delete[] arr;
 
@@ -48,16 +52,22 @@ int main()
         cout << arr2[i] << endl;
     }
 
+    cout << endl;
+
+    bool test2 = util.CheckOrderedListDec(arr2, SIZE);
+
     delete[] arr2;
 
     //test output messaging
     cout << "BUBBLESORT (ASCENDING ORDER)" << endl;
     cout << "    -> Iterations: " << counter << endl;
     cout << "    -> Time Taken: " << duration.count() << "ms" << endl;
+    cout << "    -> List Check: " << std::boolalpha << test1 << endl;
 
     cout << endl;
 
     cout << "BUBBLESORT (DESCENDING ORDER)" << endl;
     cout << "    -> Iterations: " << counter2 << endl;
     cout << "    -> Time Taken: " << duration2.count() << "ms" << endl;
+    cout << "    -> List Check: " << std::boolalpha << test2 << endl;
 }

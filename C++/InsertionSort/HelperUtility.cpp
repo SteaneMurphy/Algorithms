@@ -1,6 +1,5 @@
 #include "HelperUtility.h"
 #include <cstdlib>
-using namespace std;
 
 //for a given array, populate with random numbers
 void HelperUtility::GenerateRandomSet(int arr[], int size)
@@ -14,9 +13,9 @@ void HelperUtility::GenerateRandomSet(int arr[], int size)
 //check is list is sorted ascending
 bool HelperUtility::CheckOrderedListAsc(int arr[], int size)
 {
-    for (int i = 0; i < size - 1; i++)
+    for (int i = 0; i < size - 1; i++) 
     {
-        if (arr[i] > arr[i + 1])
+        if (i > (i + 1)) 
         {
             return false;
         }
@@ -29,7 +28,7 @@ bool HelperUtility::CheckOrderedListDec(int arr[], int size)
 {
     for (int i = 0; i < size - 1; i++)
     {
-        if (arr[i] < arr[i + 1])
+        if (i < (i + 1))
         {
             return false;
         }
