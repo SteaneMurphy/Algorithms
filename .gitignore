@@ -219,3 +219,5 @@ AppPackages/
 Debug/
 Properties/
 *.vsidx
+*.vcxproj
+*.vcxproj.filters
