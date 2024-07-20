@@ -1,4 +1,4 @@
-### Algorithms
+# Algorithms
 Various algorithms made using different languages
 
 ## Bubble Sort
