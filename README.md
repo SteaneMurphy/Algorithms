@@ -12,3 +12,4 @@ Insertion sort implemented in both ascending and descending order. Options avail
 ## Quick Sort (Recursive, Memory-Unsafe)
 
 Quick sort implemented in both ascending and descending order. Options available for Median of Three, End, Start and Random pivots. Available in C#
+In place sorting method.
