@@ -10,17 +10,7 @@ using System.Reflection;
  *                                 STEANE                                      *
  *******************************************************************************/
 
-// This sorting algorithm loops through each element in a data set. Each element is compared to the
-// next element and switched based on whether it is ascending or descending output.
-// I tried using recursion but that causes a stackoverflow error for this algorithm due to limited stack
-// space. On average, each recursion call uses 1000KB of space, this test uses 50k iterations and approximately
-// 50MB of stack space, which is over the 1MB limit set by Windows.
 
-// A while loop is more efficient and quicker, it also does not have stackoverflow issues. Because of this
-// the while loop structure was chosen to build the BubbleSort algorithm
-
-// The tests below generate a random integer set of 50k numbers and sort both ascending and descending, outputting the
-// sorted lists and their respective time taken.
 
 namespace Main
 {

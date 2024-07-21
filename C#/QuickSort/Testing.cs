@@ -52,7 +52,6 @@ namespace Algorithms
                     MessageAlgorithmType(j);
                     bool test = false;
                     int counter = 0;
-                    int[] resultArray = new int[unsortedArray.Length];
                     int[] arrayCopy = new int[unsortedArray.Length];
                     Array.Copy(unsortedArray, arrayCopy, unsortedArray.Length);
                     timer.Reset();
@@ -62,58 +61,58 @@ namespace Algorithms
                     {
                         //Median of Three, Ascending
                         case 0:
-                            (resultArray, counter) = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
+                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
                                 QuickSort.PivotType.MedianOfThree, newSort.AscendingComparison);
-                            test = CheckSortedAsc(resultArray);
+                            test = CheckSortedAsc(arrayCopy);
                             break;
 
                         //Median of Three, Descending
                         case 1:
-                            (resultArray, counter) = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
+                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
                                 QuickSort.PivotType.MedianOfThree, newSort.DescendingComparison);
-                            test = CheckSortedDesc(resultArray);
+                            test = CheckSortedDesc(arrayCopy);
                             break;
 
                         //End Pivot Method, Ascending
                         case 2:
-                            (resultArray, counter) = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
+                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
                                 QuickSort.PivotType.End, newSort.AscendingComparison);
-                            test = CheckSortedAsc(resultArray);
+                            test = CheckSortedAsc(arrayCopy);
                             break;
 
                         //End Pivot Method, Descending
                         case 3:
-                            (resultArray, counter) = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
+                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
                                 QuickSort.PivotType.End, newSort.DescendingComparison);
-                            test = CheckSortedDesc(resultArray);
+                            test = CheckSortedDesc(arrayCopy);
                             break;
 
                         //Random Pivot Method, Ascending
                         case 4:
-                            (resultArray, counter) = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
+                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
                                 QuickSort.PivotType.Random, newSort.AscendingComparison);
-                            test = CheckSortedAsc(resultArray);
+                            test = CheckSortedAsc(arrayCopy);
                             break;
 
                         //Random Pivot Method, Descending
                         case 5:
-                            (resultArray, counter) = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
+                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
                                 QuickSort.PivotType.Random, newSort.DescendingComparison);
-                            test = CheckSortedDesc(resultArray);
+                            test = CheckSortedDesc(arrayCopy);
                             break;
 
                         //Start Pivot Method, Ascending
                         case 6:
-                            (resultArray, counter) = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
+                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
                                 QuickSort.PivotType.Start, newSort.AscendingComparison);
-                            test = CheckSortedAsc(resultArray);
+                            test = CheckSortedAsc(arrayCopy);
                             break;
 
                         //Start Pivot Method, Descending
                         case 7:
-                            (resultArray, counter) = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
+                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
                                 QuickSort.PivotType.Start, newSort.DescendingComparison);
-                            test = CheckSortedDesc(resultArray);
+                            test = CheckSortedDesc(arrayCopy);
                             break;
                         default:
                             throw new Exception("Error: called test does not exist");

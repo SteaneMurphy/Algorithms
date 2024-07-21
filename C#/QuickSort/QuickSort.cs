@@ -7,23 +7,23 @@ namespace Algorithms
         //main sorting method, user can delegate pivot type and sort order (ascending/descending)
         //Sort() is called recursively for all sets above and below the pivot for each recursion
         //iteration counter is accumlated through Sort() returns
-        public (int[], int) Sort(int[] array, int startIndex, int endIndex, PivotType pivotType, Func<int, int, bool> comparisonType) 
+        public int Sort(int[] array, int startIndex, int endIndex, PivotType pivotType, Func<int, int, bool> comparisonType) 
         {
             int counter = 1;
 
             //if there are no more numbers to partition, return array
             if(endIndex <= startIndex) 
             {
-                return (array, counter);
+                return counter;
             }
 
             int pivot = PartitionArray(array, startIndex, endIndex, pivotType, comparisonType);
-            (int[] arrayTemp1, int counter2) = Sort(array, startIndex, pivot - 1, pivotType, comparisonType);
-            (int[] arrayTemp2, int counter3) = Sort(array, pivot + 1, endIndex, pivotType, comparisonType);
+            int counter2 = Sort(array, startIndex, pivot - 1, pivotType, comparisonType);
+            int counter3 = Sort(array, pivot + 1, endIndex, pivotType, comparisonType);
 
             counter += counter2 + counter3;
 
-            return (array, counter);
+            return counter;
         }
 
         public enum PivotType
