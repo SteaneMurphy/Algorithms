@@ -1,8 +1,4 @@
-﻿using System;
-using Algorithms;
-using System.Diagnostics;
-using static System.Net.Mime.MediaTypeNames;
-using System.Reflection;
+﻿using Algorithms;
 
 /*******************************************************************************
  *                                MERGE SORT                                   *
@@ -10,7 +6,24 @@ using System.Reflection;
  *                                 STEANE                                      *
  *******************************************************************************/
 
+// This is a recursive sorting algorithm. The algorithm splits the array into sub-arrays, this process is repeated recursively until the dataset
+// reaches an element size of 1, or cannot be split any further.
 
+// For each level of the recursion, a merge function is implemented to sort the two split arrays. This begins at the bottom level of sub-arrays and
+// moves upwards until the original array has been sorted.
+
+// This version of MergeSort contains tests for 50,000 numbers and does not break the stack limit. This is because each array is more or less divided
+// in half. This prevents large recursion depth, as seen in recusrive QuickSort.
+
+// The following datasets are generated for testing use: random, sorted ascending, sorted descending, nearly sorted and duplicate numbers.
+
+// To use the NergeSort algorithm class outside of the test suite, create a new instance of 'MergeSort' and call the 'Sort' method. You can delegate 
+// which order to sort the dataset. For example:
+
+// MergeSort newSort = new MergeSort();
+// newSort.Sort(dataSet, desiredOrder);
+
+// All datasets must be integer arrays at this point.
 
 namespace Main
 {
@@ -18,47 +31,10 @@ namespace Main
     {
         static void Main(string[] args)
         {
+            //create new sort and testing instances
             MergeSort newSort = new MergeSort();
-            Stopwatch timer = new Stopwatch();
-
-            //create randomised 50k list of integers
-            //have to make seperate copies of the original array as it is referenced
-            int[] unsortedArray = RandomSet();
-            int[] unsortedCopy1 = new int[unsortedArray.Length];
-            //int[] unsortedCopy2 = new int[unsortedArray.Length];
-            Array.Copy(unsortedArray, unsortedCopy1, unsortedArray.Length);
-            //Array.Copy(unsortedArray, unsortedCopy2, unsortedArray.Length);
-
-            ////test 1
-            timer.Start();
-            int[] sortedArray = newSort.SortTopDown(unsortedCopy1);
-            timer.Stop();
-
-            for (int i = 0; i < sortedArray.Length; i++)
-            {
-                Console.WriteLine(sortedArray[i]);
-            }
-            //bool test = CheckSortedAsc(sortedArray);
-
-            //output messaging and timings
-            Console.WriteLine("\n MERGE SORT (RECURSIVE TOP DOWN)");
-            //Console.WriteLine($"   -> Loop iterations: {counter}");
-            Console.WriteLine($"   -> Time taken: {timer.Elapsed.ToString(@"m\:ss\.fff")}ms\n");
-            //Console.WriteLine($"   -> List order checked: {test}");
-        }
-
-        //create random set of 50k numbers to test
-        static int[] RandomSet()
-        {
-            Random rnd = new Random();
-            int[] array = new int[50000];
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = rnd.Next();
-            }
-
-            return array;
-        }
+            Testing testing = new Testing();
+            testing.GenerateTests();
+        }   
     }
 }

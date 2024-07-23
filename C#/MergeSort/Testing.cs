@@ -6,7 +6,7 @@ namespace Algorithms
     public class Testing
     {
         //change dataSize for smaller/larger datasets
-        public int dataSize = 8000;
+        public int dataSize = 50000;
         //nearly sorted list
         public int nearlySortedSwaps = 6;
         //duplicates
@@ -16,16 +16,16 @@ namespace Algorithms
         public void GenerateTests()
         {
             Stopwatch timer = new Stopwatch();
-            QuickSort newSort = new QuickSort();
+            MergeSort newSort = new MergeSort();
 
             #region Tests
             //for each type of dataset
-            for (int i = 0; i < 5; i++) 
+            for (int i = 0; i < 5; i++)
             {
                 MessageTestType(i);
                 int[] unsortedArray = new int[dataSize];
 
-                switch (i) 
+                switch (i)
                 {
                     case 0:
                         unsortedArray = RandomSet();
@@ -46,8 +46,8 @@ namespace Algorithms
                         break;
                 }
 
-                //for each type of QuickSort (pivot + sort order)
-                for (int j = 0; j < 8; j++)
+                //for each type of MergeSort (sort order)
+                for (int j = 0; j < 2; j++)
                 {
                     MessageAlgorithmType(j);
                     bool test = false;
@@ -59,61 +59,18 @@ namespace Algorithms
 
                     switch (j)
                     {
-                        //Median of Three, Ascending
+                        //MergeSort, Ascending
                         case 0:
-                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
-                                QuickSort.PivotType.MedianOfThree, newSort.AscendingComparison);
+                            newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1, newSort.AscendingComparison);
                             test = CheckSortedAsc(arrayCopy);
                             break;
 
-                        //Median of Three, Descending
+                        //MergeSort, Descending
                         case 1:
-                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
-                                QuickSort.PivotType.MedianOfThree, newSort.DescendingComparison);
+                            newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1, newSort.DescendingComparison);
                             test = CheckSortedDesc(arrayCopy);
                             break;
 
-                        //End Pivot Method, Ascending
-                        case 2:
-                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
-                                QuickSort.PivotType.End, newSort.AscendingComparison);
-                            test = CheckSortedAsc(arrayCopy);
-                            break;
-
-                        //End Pivot Method, Descending
-                        case 3:
-                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
-                                QuickSort.PivotType.End, newSort.DescendingComparison);
-                            test = CheckSortedDesc(arrayCopy);
-                            break;
-
-                        //Random Pivot Method, Ascending
-                        case 4:
-                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
-                                QuickSort.PivotType.Random, newSort.AscendingComparison);
-                            test = CheckSortedAsc(arrayCopy);
-                            break;
-
-                        //Random Pivot Method, Descending
-                        case 5:
-                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
-                                QuickSort.PivotType.Random, newSort.DescendingComparison);
-                            test = CheckSortedDesc(arrayCopy);
-                            break;
-
-                        //Start Pivot Method, Ascending
-                        case 6:
-                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
-                                QuickSort.PivotType.Start, newSort.AscendingComparison);
-                            test = CheckSortedAsc(arrayCopy);
-                            break;
-
-                        //Start Pivot Method, Descending
-                        case 7:
-                            counter = newSort.Sort(arrayCopy, 0, arrayCopy.Length - 1,
-                                QuickSort.PivotType.Start, newSort.DescendingComparison);
-                            test = CheckSortedDesc(arrayCopy);
-                            break;
                         default:
                             throw new Exception("Error: called test does not exist");
                     }
@@ -123,7 +80,7 @@ namespace Algorithms
                     Console.WriteLine($"   -> Time taken: {timer.Elapsed.ToString(@"m\:ss\.fff")}ms");
                     Console.WriteLine($"   -> List order checked: {test}\n");
                 }
-            }           
+            }
             #endregion
         }
 
@@ -131,15 +88,9 @@ namespace Algorithms
         //message indicator so it is known what test is being run
         private void MessageAlgorithmType(int i)
         {
-            string[] testMessages = new string[8];
-            testMessages[0] = "Median of Three (MOT) Ascending starting...";
-            testMessages[1] = "Median of Three (MOT) Descending starting...";
-            testMessages[2] = "Standard Pivot End Ascending starting...";
-            testMessages[3] = "Standard Pivot End Descending starting...";
-            testMessages[4] = "Random Pivot (EPM) Ascending starting...";
-            testMessages[5] = "Random Pivot (EPM) Descending starting...";
-            testMessages[6] = "Standard Pivot Start Ascending starting...";
-            testMessages[7] = "Standard Pivot Start Descending starting...";
+            string[] testMessages = new string[2];
+            testMessages[0] = "MergeSort, Ascending starting...";
+            testMessages[1] = "MergeSort, Descending starting...";
 
             Console.WriteLine(testMessages[i]);
         }
@@ -174,7 +125,7 @@ namespace Algorithms
         }
 
         //generate a sorted set of numbers (ascending)
-        private int[] SortedAscending() 
+        private int[] SortedAscending()
         {
             int[] array = new int[dataSize];
 
@@ -187,7 +138,7 @@ namespace Algorithms
         }
 
         //generate a sorted set of numbers (descending)
-        private int[] SortedDescending() 
+        private int[] SortedDescending()
         {
             int[] array = new int[dataSize];
 
@@ -200,7 +151,7 @@ namespace Algorithms
         }
 
         //generate a set of numbers that is *nearly* sorted
-        private int[] NearlySorted() 
+        private int[] NearlySorted()
         {
 
             Random rnd = new Random();
@@ -211,7 +162,7 @@ namespace Algorithms
                 array[i] = i;
             }
 
-            for (int i = 0; i < nearlySortedSwaps; i++) 
+            for (int i = 0; i < nearlySortedSwaps; i++)
             {
                 int index1 = rnd.Next(0, dataSize);
                 int index2 = rnd.Next(0, dataSize);
