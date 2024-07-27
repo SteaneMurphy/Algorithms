@@ -5,7 +5,7 @@ namespace Algorithms
     public class BubbleSort
     {
         //sort given array in ascending order
-        public (int[], int) SortAscending(int[] array) 
+        public int SortAscending(int[] array) 
         {
             bool isSorted = false;
             int counter = 0;
@@ -28,11 +28,11 @@ namespace Algorithms
                     }
                 }
             }
-            return (array, counter);
+            return counter;
         }
 
         //sort given array in descending order
-        public (int[], int) SortDescending(int[] array)
+        public int SortDescending(int[] array)
         {
             bool isSorted = false;
             int counter = 0;
@@ -55,7 +55,7 @@ namespace Algorithms
                     }
                 }
             }
-            return (array, counter);
+            return counter;
         }
     }
 }

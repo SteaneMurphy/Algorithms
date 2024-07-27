@@ -42,25 +42,25 @@ namespace Main
 
             ////test 1
             timer.Start();
-            (int[] sortedArray, int counter) = newSort.SortAscending(unsortedCopy1);
+            int counter = newSort.SortAscending(unsortedCopy1);
             timer.Stop();
 
-            for (int i = 0; i < sortedArray.Length; i++)
+            for (int i = 0; i < unsortedCopy1.Length; i++)
             {
-                Console.WriteLine(sortedArray[i]);
+                Console.WriteLine(unsortedCopy1[i]);
             }
-            bool test = CheckSortedAsc(sortedArray);
+            bool test = CheckSortedAsc(unsortedCopy1);
 
             //test 2
             timer2.Start();
-            (int[] sortedArray2, int counter2) = newSort.SortDescending(unsortedCopy2);
+            int counter2 = newSort.SortDescending(unsortedCopy2);
             timer2.Stop();
 
-            for (int j = 0; j < sortedArray2.Length; j++)
+            for (int j = 0; j < unsortedCopy2.Length; j++)
             {
-                Console.WriteLine(sortedArray2[j]);
+                Console.WriteLine(unsortedCopy2[j]);
             }
-            bool test2 = CheckSortedDesc(sortedArray2);
+            bool test2 = CheckSortedDesc(unsortedCopy2);
 
             //output messaging and timings
             Console.WriteLine("\nBUBBLE SORT (ASCENDING ORDER)");
